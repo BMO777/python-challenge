@@ -37,7 +37,7 @@ with open(csvpath) as file:
         per_r = (r_votes/total_votes) * 100
 
 
-        #start process of calculating max by aking list of whole row with candidates in it
+        #start process of calculating max by making list of whole row with candidates in it
         candidate_names = row[2]
         #loops though candidate names to count the occurence 
         if candidate_names not in candidate_list:
