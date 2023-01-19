@@ -5,5 +5,5 @@ Python code in Pybank loops though values in csv file within resource folder, ca
 
 Main.py in Pypoll loops through to calculate Total Votes, Each candidate’s total votes and percent of votes, and the Winner.
 
-Clone the repository then run the code within the folder in the .py files but if using vs code, open individual files rather than folders, or csv files may not be found by code.
+Clone the repository, then run the code within the folder in the .py files but if using vs code, open individual files rather than folders, or csv files may not be found by code.
 
