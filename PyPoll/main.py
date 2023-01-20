@@ -72,17 +72,47 @@ with open(csvpath) as file:
 
 
 
-# Store the file path associated with the file (note the backslash may be OS specific)
-file = os.path.join('analysis', 'results.txt')
+ file = os.path.join('analysis', 'results.txt')
 
-# # Open the file in "read" mode ('r') and store the contents in the variable "text"
-with open(file, 'r') as text:
+# # Open the file in "write" mode ('w') 
+with open(file, 'w') as text:
 
-#     # This stores a reference to a file stream
-    print(text)
+#    
 
-#     # Store all of the text printed to the terminal inside a variable called "lines"
-    lines = text.read()
+    import io
+    import contextlib
 
-    # Print the contents of the text file
-    print(lines)
+     # This captures the output to terminal
+
+    captured_output = io.StringIO()
+
+    with contextlib.redirect_stdout(captured_output):
+        
+        #print accoding to the pattern required
+        print("Election Results")
+
+
+        print("----------------------------") 
+        print(f'Total Votes: {total_votes}')
+
+
+        #use round function to truncate percentage numbers by three decimals
+        print("----------------------------")
+        print(f'Charles Casper Stockham: {round(per_c, 3)}% ({c_votes})')
+        print(f'Diana DeGette: {round(per_d, 3)}% ({d_votes})')
+        print(f'Raymon Anthony Doane: {round(per_r, 3)}% ({r_votes})')
+    
+
+        print("----------------------------")
+        #calculate winner using max function comparing all three value next to their names in the dictionary created above
+        winner = max(candidate_dict, key=candidate_dict.get)
+
+        print(f'Winner: {winner}')
+        print("----------------------------")
+
+
+    # sets variable from output
+    captured_string = captured_output.getvalue()
+
+    #writes captures output to file
+    text.write(captured_string)
