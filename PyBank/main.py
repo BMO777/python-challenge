@@ -74,19 +74,40 @@ with open(csvpath) as csvfile:
 
    
 
-# Store the file path associated with the file (note the backslash may be OS specific)
-file = os.path.join('analysis', 'results.txt')
+file = os.path.join('analysis', 'results.txt')   
+# # Open the file in "write" mode ('w') 
+with open(file, 'w') as text:
 
-# # Open the file in "read" mode ('r') and store the contents in the variable "text"
-with open(file, 'r') as text:
+#    
 
-#     # This stores a reference to a file stream
-    print(text)
+    import io
+    import contextlib
 
-#     # Store all of the text printed to the terminal inside a variable called "lines"
-    lines = text.read()
+     # This captures the output to terminal
 
-    # Print the contents of the text file
-    print(lines)
+    captured_output = io.StringIO()
+
+    with contextlib.redirect_stdout(captured_output):
+
+          # print values required to match assignment
+
+        print("Financial Analysis")
+
+
+        print("----------------------------")    
+        print(f'Total Months: {month_count}')
+        print(f'Total: ${total}')
+        print(f'Average Change: ${int(avg_change)}')
+        print(f'Greatest Increase in Profits: {inc_date} (${g_inc})')
+        print(f'Greatest Decrease in Profits: {dec_date} (${g_dec})')
+
+
+
+
+    # sets variable from output
+    captured_string = captured_output.getvalue()
+
+    #writes captures output to file
+    text.write(captured_string)
 
 
