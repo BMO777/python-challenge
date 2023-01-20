@@ -1,5 +1,5 @@
 # python-challenge
-Contains folders, PyBank&PyPoll with python code in main.py files to loop through csv files in resources folder within each parent folder, then exports the results tn the analysis folder in text file format.
+Contains folders, PyBank&PyPoll with python code in main.py files to loop through csv files in resources folder within each parent folder, then exports the results to the analysis folder in text file format.
 
 Python code in Pybank loops though values in csv file within resource folder, calculating Total Months, Total, Average Change, Greatest Increase& Greatest Decrease, then exporting the terminal output to txt file.
 
