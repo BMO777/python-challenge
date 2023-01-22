@@ -1,9 +1,12 @@
+
 #make sure os capability to find csv file is as good as possible:
 import csv
 
 import os
 
 csvpath = os.path.join('Resources', 'election_data.csv')
+
+
 
 #set initial variables for total votes, Charles,Diana,and Raymon votes, also set proper backets for dictionary&list
 total_votes = 0
@@ -37,7 +40,7 @@ with open(csvpath) as file:
         per_r = (r_votes/total_votes) * 100
 
 
-        #start process of calculating max by making list of whole row with candidates in it
+        #start process of calculating max by aking list of whole row with candidates in it
         candidate_names = row[2]
         #loops though candidate names to count the occurence 
         if candidate_names not in candidate_list:
@@ -47,8 +50,9 @@ with open(csvpath) as file:
             
             #if same candidate name encountered, add one to the counter next to proper index in dictionary created above
         candidate_dict[candidate_names] += 1
-        
-    #print accoding to the pattern required
+
+ 
+#print accoding to the pattern required
     print("Election Results")
 
 
@@ -61,18 +65,16 @@ with open(csvpath) as file:
     print(f'Charles Casper Stockham: {round(per_c, 3)}% ({c_votes})')
     print(f'Diana DeGette: {round(per_d, 3)}% ({d_votes})')
     print(f'Raymon Anthony Doane: {round(per_r, 3)}% ({r_votes})')
-   
+
 
     print("----------------------------")
     #calculate winner using max function comparing all three value next to their names in the dictionary created above
     winner = max(candidate_dict, key=candidate_dict.get)
 
     print(f'Winner: {winner}')
-    print("----------------------------")
+    print("----------------------------")      
 
-
-
- file = os.path.join('analysis', 'results.txt')
+file = os.path.join('analysis', 'results.txt')
 
 # # Open the file in "write" mode ('w') 
 with open(file, 'w') as text:
@@ -116,3 +118,4 @@ with open(file, 'w') as text:
 
     #writes captures output to file
     text.write(captured_string)
+
